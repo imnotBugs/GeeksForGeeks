@@ -8,8 +8,7 @@ class Solution{
     queue<Node*> q;
     q.push(root);
     bool leftToRight = true;
-
-    while (!q.empty()) {
+     while (!q.empty()) {
         int levelSize = q.size();
         vector<int> levelNodes(levelSize);
 
