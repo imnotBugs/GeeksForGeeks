@@ -3,7 +3,7 @@ public:
     vector<int> Series(int n) {
         const int MOD = 1e9 + 7;
         vector<int> fib(n + 1);
-        
+
         fib[0] = 0;
         if (n > 0)
             fib[1] = 1;
