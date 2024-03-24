@@ -1,0 +1,19 @@
+class Solution{
+public:
+        stack<int> insertAtBottom(stack<int> St, int X)
+    {
+        stack<int> check;
+        while (!St.empty())
+        {
+            check.push(St.top());
+            St.pop();
+        }
+        St.push(X);
+        while (!check.empty())
+        {
+            St.push(check.top());
+            check.pop();
+        }
+        return St;
+    }
+};
