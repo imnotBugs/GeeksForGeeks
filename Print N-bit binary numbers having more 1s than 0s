@@ -1,0 +1,26 @@
+class Solution{
+public:	
+	void rec(int n, int i,int one, int zero,vector<string> &ans, string temp)
+    {
+        if(i>=n)
+        {
+            ans.push_back(temp);
+            return;
+        }
+        temp += '1';
+        rec(n,i+1,one+1,zero,ans,temp);
+        temp.pop_back();
+        if(one > zero)
+        {
+            temp += '0';
+            rec(n,i+1,one,zero+1,ans,temp);
+            temp.pop_back();
+        }
+    }
+	vector<string> NBitBinary(int n)
+	{
+	    vector<string> ans;
+	    rec(n,0,0,0,ans,"");
+	     return ans;
+	}
+};
