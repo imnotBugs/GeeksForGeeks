@@ -9,7 +9,7 @@ class Solution {
         }
         vector<vector<int>> dist(n,vector<int>(n,INT_MAX));
         
-        
+      
         int minCity = INT_MAX;
         int ans = -1;
         
