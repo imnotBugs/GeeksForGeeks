@@ -1,0 +1,23 @@
+class Solution {
+  public:
+    int findMaxForN(Node* root, int n) {
+        // code 
+        int maxi=-1;
+        queue<Node*> q;
+        q.push(root);
+        while(!q.empty())
+        {
+            Node* curr=q.front();
+            q.pop();
+            if(curr->key <= n && curr->key > maxi)
+            {
+                maxi=curr->key;
+            }
+            
+            if(curr->left!=NULL)q.push(curr->left);
+            if(curr->right!=NULL)q.push(curr->right);
+        }
+        return maxi;
+
+    }
+};
