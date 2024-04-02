@@ -1,0 +1,46 @@
+class Solution
+{
+    public:
+    void fun(Node *root , int &m)
+    {
+        if(root == NULL) return;
+        m = min(m , root->data);
+        fun(root->left , m);
+        fun(root->right , m);
+    }
+    
+    void fun2(Node *root , int &m)
+    {
+        if(root == NULL) return;
+        // cout<<root->data<<" ";
+        m = max(m , root->data);
+        fun2(root->left , m);
+        fun2(root->right , m);
+    }
+    
+    void rec(Node *root , int &minn)
+    {
+        if(root == NULL) return;
+        
+        int m = INT_MAX;
+        int n = INT_MIN;
+        
+        fun(root->right,m);
+        fun2(root->left , n);
+        // cout<<" \n";
+        // cout<<root->data<<" "<<m<<" "<<n<<"\n";
+        
+        if(m!=INT_MAX) minn = min(minn,abs(root->data - m));
+        if(n!=INT_MIN) minn = min(minn,abs(root->data - n));
+        
+        rec(root->left , minn);
+        rec(root->right , minn);
+    }
+    int absolute_diff(Node *root)
+    {
+        //Your code here
+        int minn = INT_MAX;
+        rec(root , minn);
+        return minn;
+    }
+};
