@@ -1,0 +1,45 @@
+class Solution{
+    public:
+    // function to convert a given Gray equivalent n to Binary equivalent.
+    int grayToBinary(int n)
+    {
+        
+
+        
+    if(n==0) return 0;
+    
+    string ans="",gray="",bin="";
+    while(n>0)
+    {
+        ans=to_string(n%2)+ans;
+        n/=2;
+    }
+       
+
+    
+    
+    bin=bin+ans[0];
+    
+    for(int i=0;i<ans.length()-1;i++)
+    {
+        if(bin[i]==ans[i+1])
+        {
+            bin=bin+'0';
+        }
+        
+        else bin=bin+'1';
+    }
+    
+    int mn=ans.length()-1;
+    int bb=0;
+    
+    for(int j=0;j<ans.length();j++)
+    {
+        bb+=(bin[j]-'0')*pow(2, mn);
+        mn--;
+    }
+    
+    
+    return bb;
+    }
+};
