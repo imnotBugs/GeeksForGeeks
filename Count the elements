@@ -1,0 +1,40 @@
+class Solution {
+  public:
+    int countElements(int key ,vector<int>&b ,int n){
+        int s=0 ,e=n-1 ;
+        int ans =n;
+        
+        while(s<=e){
+            int mid =s+(e-s)/2;
+            
+            if(b[mid]<=key){
+                s =mid+1;
+            }
+            else{
+                ans =mid;
+                e=mid-1;
+            }
+        }
+        return ans;
+    }
+  public:
+    vector<int> countElements(vector<int> &a, vector<int> &b, int n, vector<int> &query,
+                              int q) {
+       
+        vector<int>res(q);
+ 
+        sort(b.begin() ,b.end());
+  
+       
+        for(int i=0; i<q; i++){
+            int cnt=0;
+            int element =a[query[i]];
+           
+            cnt+=countElements(element ,b ,n);
+            res[i] =cnt;
+            
+        }
+        
+        return res;
+    }
+};
