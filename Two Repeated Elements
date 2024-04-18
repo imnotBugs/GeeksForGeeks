@@ -1,0 +1,15 @@
+class Solution {
+  public:
+
+    vector<int> twoRepeated (int arr[], int n) {
+         vector<int>v;
+         for(int i=0;i<n+2;i++)
+         {
+            int a=arr[i]%(n+2);
+            arr[a]+=(n+2);
+            if(arr[a]/(n+2)>=2)
+                v.push_back(a);
+         }
+        return v;
+    }
+};
