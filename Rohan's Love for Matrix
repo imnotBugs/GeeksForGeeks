@@ -1,0 +1,19 @@
+class Solution {
+  public:
+    int firstElement(int n) {
+        
+       if(n==0) return 0;
+        int mod=1e9+7;
+        vector<long long>prod={1,1,1,0};
+        
+        for(int i=1;i<n;i++){
+            long long t1=(prod[0]+prod[1])%mod;
+            long long t2=(prod[2]+prod[3])%mod;
+            prod[1]=prod[0];
+            prod[3]=prod[2];
+            prod[0]=t1;
+            prod[2]=t2;
+        }
+        return prod[2];
+    }
+};
