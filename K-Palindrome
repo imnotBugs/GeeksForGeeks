@@ -1,0 +1,27 @@
+class Solution{
+public:
+    int dp[1001][1001];
+    int isKPalRec(std::string& str1, std::string& str2, int m, int n) {
+        if (m == 0)
+            return n;
+        if (n == 0)
+            return m;
+        if (dp[m][n] != -1)
+            return dp[m][n];
+        
+        if (str1[m - 1] == str2[n - 1])
+            return dp[m][n] = isKPalRec(str1, str2, m - 1, n - 1);
+        
+        return dp[m][n] = 1 + std::min(isKPalRec(str1, str2, m - 1, n), // Remove from str1
+                                       isKPalRec(str1, str2, m, n - 1)); // Remove from str2
+    }
+    
+    int kPalindrome(std::string str, int n, int k) {
+        std::string revStr = str;
+        std::reverse(revStr.begin(), revStr.end());
+        int len = str.length();
+        std::memset(dp, -1, sizeof(dp));
+        
+        return (isKPalRec(str, revStr, len, len) <= k * 2);
+    }
+};
