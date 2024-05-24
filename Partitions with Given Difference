@@ -1,4 +1,6 @@
-int mod=1e9+7;
+class Solution {
+  public:
+    int mod=1e9+7;
     int help(int n,int d,vector<int> &arr,int &sum,int temp,int index, vector<vector<int>> &dp){
         if(sum-temp*2<d)return 0;
         if(index==n){
@@ -18,3 +20,5 @@ int mod=1e9+7;
         vector<vector<int>> dp(n,vector<int>(sum+1,-1));
         return help(n,d,arr,sum,0,0,dp);
     }
+
+};
