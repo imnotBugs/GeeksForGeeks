@@ -1,0 +1,26 @@
+class Solution {
+  public:
+        vector<int> constructList(int q, vector<vector<int>> &queries)
+    {
+        vector<int> res;
+        int xorTemp = 0;
+    
+        for (int i = q - 1; i >= 0; i--)
+        {
+            if (queries[i][0] == 1)
+            {
+                xorTemp ^= queries[i][1];
+            }
+            else
+            {
+                res.push_back(queries[i][1] ^ xorTemp);
+            }
+        }
+    
+        res.push_back(xorTemp);
+    
+        sort(res.begin(), res.end());
+    
+        return res;
+    }
+};
