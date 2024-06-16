@@ -1,0 +1,24 @@
+class Solution {
+  public:
+    vector<int> getPrimes(int n) {
+        // code here
+        // using seive of eraro calculate primes till n and then check for each i if both are prime
+        vector<int>seive(n+1, 1);
+        // firstyly marked all as prime
+        seive[0]=0; seive[1]=0;
+        for(int i=2; i*i<=n; i++){
+            if(seive[i]){
+                for(int j=i*i; j<=n; j+=i){
+                    seive[j]=0;
+                }
+            }
+        }
+        for(int i=1; i<=n; i++){
+            int a=i, b=n-i;
+            if(seive[a] && seive[b]){
+                return {a, b};
+            }
+        }
+        return {-1,-1};
+    }
+};
