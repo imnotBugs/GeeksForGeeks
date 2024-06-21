@@ -1,0 +1,36 @@
+class Solution {
+  public:
+    string compareFrac(string str) {
+
+        // Code here
+        int i=0;
+        string temp="";
+        while(i<str.size() && str[i]!='/'){
+            temp+=str[i++];
+        }
+        double a=stod(temp);
+        i++;
+        temp="";
+        while(i<str.size() && str[i]!=','){
+            temp+=str[i++];
+        }
+        double b=stod(temp);
+        i++;
+        temp="";
+        while(i<str.size() && str[i]!='/'){
+            temp+=str[i++];
+        }
+        double c=stod(temp);
+        i++;
+        temp="";
+        while(i<str.size()){
+            temp+=str[i++];
+        }
+        double d=stod(temp);
+        
+        if((a/b)==(c/d)) return "equal";
+        if((a/b)>(c/d)) return to_string(int(a))+"/"+to_string(int(b));
+        return to_string(int(c))+"/"+to_string(int(d));
+        
+    }
+};
