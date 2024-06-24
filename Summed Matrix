@@ -1,0 +1,22 @@
+class Solution {
+  public:
+    long long sumMatrix(long long n, long long q) {
+        // code here
+        long long ans=0;
+        
+        if(q>2*n)
+        return 0;
+        
+        if(q>n)
+        {
+            long long val=q-n;
+            ans=n-val+1;
+        }
+        else
+        {
+long long val=q-1;
+            ans=val-1+1;
+        }
+        return ans;
+    }
+};
