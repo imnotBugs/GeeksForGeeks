@@ -1,0 +1,35 @@
+class Solution {
+  public:
+    Node* removeAllDuplicates(struct Node* head) {
+         if (head == nullptr) return nullptr; // Handle empty list case
+        if (head->next == nullptr) return head; // Handle single node case
+
+        // First pass: count the occurrences of each value
+        std::unordered_map<int, int> mp;
+        Node* temp = head;
+        while (temp != nullptr) {
+            mp[temp->data]++;
+            temp = temp->next;
+        }
+
+        // Dummy node to handle edge cases
+        Node dummy(0);
+        dummy.next = head;
+        Node* prev = &dummy;
+        temp = head;
+
+        // Second pass: remove nodes with duplicate values
+        while (temp != nullptr) {
+            if (mp[temp->data] > 1) {
+                prev->next = temp->next;
+                delete temp;
+                temp = prev->next;
+            } else {
+                prev = temp;
+                temp = temp->next;
+            }
+        }
+
+        return dummy.next; // Return the new head of the list
+    }
+};
