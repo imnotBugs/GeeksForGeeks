@@ -1,0 +1,19 @@
+class Solution {
+  public:
+        unordered_map<string, int> m;
+        vector<Node*> v;
+        string f(Node *r) {
+            if(!r) return "";
+            
+            string x = f(r->left) + "," + to_string(r->data) + "," + f(r->right);
+            
+            ++m[x];
+            
+            if(m[x] == 2) v.push_back(r);
+            
+            return x;
+    }
+        vector<Node*> printAllDups(Node *r) {
+            return f(r), v;
+    }
+};
