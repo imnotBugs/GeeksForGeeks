@@ -1,0 +1,16 @@
+class Solution {
+  public:
+    // Function to find the vertical width of a Binary Tree.
+    unordered_set<int> set;
+    void helper(Node* root, int x){
+        if(root == NULL) return;
+        set.insert(x);
+        helper(root->left, x - 1);
+        helper(root->right, x + 1);
+    }
+    int verticalWidth(Node* root) {
+        // code here
+        helper(root, 0);
+        return set.size();
+    }
+};
