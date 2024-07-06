@@ -1,0 +1,25 @@
+class Solution {
+    private:
+    void solve(Node* root,stack<Node*>&s){
+        if(root==NULL){
+            return;
+        }
+        solve(root->left,s);
+        s.push(root);
+        solve(root->right,s);
+    }
+  public:
+
+    void populateNext(Node *root) {
+        stack<Node*>s;
+        solve(root,s);
+        
+        while(s.size()>1){
+            Node* tmp1 = s.top();
+            s.pop();
+            Node* tmp2 = s.top();
+            tmp2->next = tmp1;
+        }
+        
+    }
+};
