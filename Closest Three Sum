@@ -1,0 +1,24 @@
+class Solution {
+  public:
+    int threeSumClosest(vector<int> arr, int target) {
+        int n = arr.size();
+        sort(arr.begin(), arr.end());
+        // for (int i = 0; i < n; i++) cout << arr[i] << ' '; cout << endl;
+        int mind = 1000000000;
+        int mins = 0;
+        for (int i = 0; i < n; i++) {
+            int l = i+1, r = n-1;
+            while (l < r) {
+                int s = arr[i] + arr[l] + arr[r];
+                if (abs(s - target) < mind || (abs(s-target) == mind && s > mins)) {
+                    mins = s;
+                    mind = abs(s - target);
+                }
+                if (s == target) return s;
+                if (s < target) l++; else r--;
+            }
+        }    
+        
+        return mins;
+    }
+};
