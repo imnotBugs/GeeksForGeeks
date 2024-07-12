@@ -1,0 +1,18 @@
+class Solution {
+  public:
+    void solve(Node *p,int t,vector<int>&v){
+        if(p->left==NULL && p->right==NULL){
+            v.push_back(t+p->data);
+            return;
+        }
+        if(p->left!=NULL)solve(p->left,t+p->data,v);
+        if(p->right!=NULL)solve(p->right,t+p->data,v);
+        return;
+    }
+    bool hasPathSum(Node *root, int target) {
+        vector<int>v;
+        solve(root,0,v);
+        if(find(v.begin(),v.end(),target)!=v.end()) return true;
+        return false;
+    }
+};
