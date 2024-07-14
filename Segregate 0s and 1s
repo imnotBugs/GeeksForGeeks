@@ -1,0 +1,24 @@
+class Solution {
+  public:
+    void segregate0and1(vector<int> &arr) {
+        int left = 0;
+        int right = arr.size() - 1;
+
+        while (left < right) {
+            // Move left pointer to find the first 1 from the left
+            while (arr[left] == 0 && left < right) {
+                left++;
+            }
+            // Move right pointer to find the first 0 from the right
+            while (arr[right] == 1 && left < right) {
+                right--;
+            }
+            // Swap arr[left] and arr[right]
+            if (left < right) {
+                swap(arr[left], arr[right]);
+                left++;
+                right--;
+            }
+        }
+    }
+};
