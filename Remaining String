@@ -1,6 +1,5 @@
 class Solution {
   public:
-
        string printString(string s, char ch, int count) 
     {
         int j=0; // Used to count the no. of occurences of ch.
